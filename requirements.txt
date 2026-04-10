@@ -11,3 +11,6 @@ ollama>=0.2.0
 
 # Utilities
 python-dotenv>=1.0.0
+
+# Rich terminal output (dùng cho demo_presentation.py)
+rich>=13.0.0
