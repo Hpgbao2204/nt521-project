@@ -23,12 +23,17 @@ Kiến trúc:
   └─────────────────────────────────────────────────────────────┘
 
 Chạy:
-  python pipeline.py --model openai/gpt-4o-mini
-  python pipeline.py --model anthropic/claude-3-5-haiku-latest
-  python pipeline.py --model openai/gpt-4o-mini --limit 1 --challenge path_traversal_01
+  python pipeline.py                                              # Ollama mặc định
+  python pipeline.py --model ollama/qwen2.5-coder:7b
+  python pipeline.py --model ollama/llama3.2
+  python pipeline.py --model ollama/qwen2.5-coder:7b --limit 1 --challenge path_traversal_01
 
-Biến môi trường cần thiết (tuỳ model):
-  OPENAI_API_KEY, ANTHROPIC_API_KEY, ...
+Yêu cầu:
+  Ollama đang chạy tại http://localhost:11434 (mặc định)
+  ollama pull qwen2.5-coder:7b
+
+Biến môi trường (tuỳ chỉnh nếu Ollama chạy trên host khác):
+  OLLAMA_BASE_URL=http://localhost:11434
 """
 
 from __future__ import annotations
@@ -345,7 +350,7 @@ def cyber_exploit_eval(
     """
     inspect_ai Task chính.
     Ví dụ:
-        inspect eval pipeline.py --model openai/gpt-4o-mini
+        inspect eval pipeline.py --model ollama/qwen2.5-coder:7b
     """
     dataset = load_dataset(
         Path(config_path),
@@ -373,8 +378,8 @@ if __name__ == "__main__":
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
-        "--model", default="openai/gpt-4o-mini",
-        help="inspect_ai model string: openai/..., anthropic/..., ollama/...",
+        "--model", default="ollama/qwen2.5-coder:7b",
+        help="inspect_ai model string, e.g. ollama/qwen2.5-coder:7b, ollama/llama3.2",
     )
     parser.add_argument(
         "--config", default=str(CHALLENGE_CONFIG),

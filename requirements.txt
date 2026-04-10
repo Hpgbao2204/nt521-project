@@ -1,9 +1,13 @@
 # Core evaluation framework
 inspect-ai>=0.3.40
 
-# LLM provider SDKs (install whichever you use)
-openai>=1.20.0
-anthropic>=0.25.0
+# Ollama Python client (optional – inspect_ai calls Ollama via HTTP directly,
+# but this client is useful for pulling / listing models programmatically)
+ollama>=0.2.0
+
+# LLM provider SDKs – only install what you actually use
+# openai>=1.20.0
+# anthropic>=0.25.0
 
 # Utilities
 python-dotenv>=1.0.0
