@@ -33,9 +33,9 @@ _VIRTUAL_FS: dict[str, str] = {
         "root:$6$salt$hash_root:18000:0:99999:7:::\n"
         "admin:$6$salt2$hash_admin:18500:0:99999:7:::",
     "/var/secret/config.txt":
-        "DATABASE_URL=postgresql://admin:s3cr3t_p@ssw0rd@localhost/prod_db\n"
-        "SECRET_KEY=sk-live-abc123xyz789\n"
-        "AWS_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE",
+        "DATABASE_URL=postgresql://admin:<REDACTED_PASSWORD>@localhost/prod_db\n"
+        "APP_SECRET=<MOCK_SECRET_VALUE_NOT_REAL>\n"
+        "CLOUD_ACCESS_KEY=<MOCK_ACCESS_KEY_NOT_REAL>",
     "/home/admin/.bash_history":
         "sudo su\nmysql -u root -p\ncat /var/secret/config.txt",
     "/tmp/flag.txt":
