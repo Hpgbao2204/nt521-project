@@ -9,9 +9,14 @@
 \LoadClass[a4paper,12pt,oneside]{report}
 
 %% ─── Encoding & Vietnamese ──────────────────────────────────────────────────
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T5]{fontenc}
-\RequirePackage[vietnamese]{babel}
+%% Sử dụng fontspec + polyglossia (biên dịch bằng xelatex hoặc lualatex)
+\RequirePackage{fontspec}
+\RequirePackage{polyglossia}
+\setdefaultlanguage{vietnamese}
+\setotherlanguage{english}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
 
 %% ─── Geometry ───────────────────────────────────────────────────────────────
 \RequirePackage[
@@ -22,8 +27,8 @@
 ]{geometry}
 
 %% ─── Fonts ──────────────────────────────────────────────────────────────────
-\RequirePackage{lmodern}
-\RequirePackage{microtype}
+%% Fonts đã được thiết lập bởi fontspec ở trên
+%% microtype bị bỏ do xung đột với một số engine
 
 %% ─── Math & Symbols ────────────────────────────────────────────────────────
 \RequirePackage{amsmath,amssymb,amsfonts}
@@ -111,12 +116,9 @@
 ]{hyperref}
 
 %% ─── Bibliography ───────────────────────────────────────────────────────────
-\RequirePackage[
-  backend   = biber,
-  style     = numeric,
-  sorting   = nyt,
-  maxnames  = 3,
-]{biblatex}
+%% Sử dụng natbib + bibtex thay vì biblatex để tương thích rộng hơn
+\RequirePackage[numbers,sort&compress]{natbib}
+\bibliographystyle{ieeetr}
 
 %% ─── Captions & Floats ─────────────────────────────────────────────────────
 \RequirePackage[font=small, labelfont=bf]{caption}
@@ -199,7 +201,6 @@
 %% ─── Misc ───────────────────────────────────────────────────────────────────
 \RequirePackage{pdfpages}
 \RequirePackage{appendix}
-\RequirePackage{glossaries}
 
 %% ─── Custom commands ────────────────────────────────────────────────────────
 \newcommand{\code}[1]{\texttt{#1}}
